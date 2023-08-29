@@ -44,3 +44,13 @@ class User{
     CartSubtotal -=price;
   }
 }
+
+
+User u1 = User(name: "omar", email: "email1@gmail.com", password: "1234", ShoppingCart: []);
+User u2 = User(name: "mohammed", email: "email2@gmail.com", password: "1234", ShoppingCart: []);
+User u3 = User(name: "ali", email: "email3@gmail.com", password: "1234", ShoppingCart: []);
+// ! try to make SavedProducts nullable in User class
+
+List<User> users = [u1, u2, u3];
+
+User thisuser = User(name: "", email: "", password: "", ShoppingCart: []); // ! this is a temporary user that will be replaced by the user that logs in

@@ -3,8 +3,7 @@ import 'LoginPage.dart';
 import 'User.dart';
 
 class ProfileScreen extends StatefulWidget {
-  User user;
-  ProfileScreen({Key? key, required this.user}) : super(key: key);
+  ProfileScreen({Key? key}) : super(key: key);
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -27,7 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const Icon(Icons.person, size: 100, color: Colors.teal),
             const SizedBox(height: 200), // Add vertical space between the icon and the text
             Text(
-              widget.user.name,
+              thisuser.name,
               style: const TextStyle(
                 color: Colors.teal,
                 fontWeight: FontWeight.bold,
@@ -35,14 +34,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             Text(
-              widget.user.email,
+              thisuser.email,
               style: const TextStyle(
                 color: Colors.teal,
                 fontWeight: FontWeight.bold,
                 fontSize: 30,
               ),
             ),
-            Text('Cart subtotal: ${widget.user.CartSubtotal}',
+            Text('Cart subtotal: ${thisuser.CartSubtotal}',
               style: const TextStyle(
               color: Colors.teal,
               fontWeight: FontWeight.bold,

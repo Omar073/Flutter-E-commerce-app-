@@ -17,12 +17,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    User u1 = User(name: "omar", email: "email1@gmail.com", password: "1234", ShoppingCart: []);
-    User u2 = User(name: "mohammed", email: "email2@gmail.com", password: "1234", ShoppingCart: []);
-    User u3 = User(name: "ali", email: "email3@gmail.com", password: "1234", ShoppingCart: []);
-    // ! try to make SavedProducts nullable in User class
-
-    List<User> users = [u1, u2, u3];
 
     return MaterialApp(
       home: Scaffold(
@@ -79,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         contentPadding: const EdgeInsets.all(20),
-                        hintText: "MyEmail@gmail.com",
+                        // hintText: "MyEmail@gmail.com",
                         labelText: "Email or Username",
                         prefixIcon: const Icon(Icons.email),
                       ),
@@ -97,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         contentPadding: const EdgeInsets.all(20),
-                        hintText: "Password",
+                        // hintText: "Password",
                         labelText: "Password",
                         prefixIcon: const Icon(Icons.key),
                       ),
@@ -118,7 +112,8 @@ class _LoginPageState extends State<LoginPage> {
                         for(User user in users) {
                           if (user.email == email || user.name == email) {
                             if (user.password == password) {
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen(user: user)));
+                              thisuser = user;
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
                             }
                           }
                         }

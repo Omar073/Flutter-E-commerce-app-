@@ -8,8 +8,7 @@ import 'ShoppingCartScreen.dart';
 import 'User.dart';
 
 class HomeScreen extends StatefulWidget {
-  User user;
-  HomeScreen({Key? key, required this.user}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -24,9 +23,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     // Initialize Screens here based on widget.user.SavedProducts
     Screens = [
-      ProductsScreen(user: widget.user, onChange: () { setState(() {}); },),
-      ShoppingCartScreen(user: widget.user, onChange: () { setState(() {}); },),
-      ProfileScreen(user: widget.user),
+      ProductsScreen(onChange: () { setState(() {}); },),
+      ShoppingCartScreen(onChange: () { setState(() {}); },),
+      ProfileScreen(),
     ];
 
     // Product p1 = Product(name: "Product 1", imageURL: "assets/images/hoodie2.jpeg", price: 80, rating: 4.8);

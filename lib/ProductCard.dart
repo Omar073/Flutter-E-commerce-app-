@@ -131,12 +131,10 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ProductCard extends StatefulWidget {
   Product product;
-  User user;
   final VoidCallback onChange;
   ProductCard(
       {Key? key,
       required this.product,
-      required this.user,
       required this.onChange})
       : super(key: key);
   // ProductCard({Key? key}) : super(key: key);
@@ -150,9 +148,6 @@ class _ProductCardState extends State<ProductCard> {
 
   @override
   Widget build(BuildContext context) {
-    for (Product product in widget.user.ShoppingCart) {
-      print(product.name);
-    }
     return Column(
       children: [
         Padding(
@@ -183,7 +178,7 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                     IconButton(
                       icon: Icon(
-                        widget.user.ShoppingCart.contains(widget.product)
+                        thisuser.ShoppingCart.contains(widget.product)
                             ? Icons.shopping_cart
                             : Icons.shopping_cart_outlined,
                         color: Colors.orangeAccent,
@@ -191,18 +186,22 @@ class _ProductCardState extends State<ProductCard> {
                       onPressed: () {
                         setState(() {
                           // widget.isProductSaved = !widget.isProductSaved; // Toggle the saved state
-                          if (!widget.user.ShoppingCart.contains(widget.product)) {
+                          if (!thisuser.ShoppingCart.any((element) => element.ID == widget.product.ID)) {
                             // Add the product to the user's saved products
-                            widget.user.addToShoppingCart(widget.product);
-                            widget.user.addToCartSubtotal(widget.product.price);
+                            thisuser.addToShoppingCart(widget.product);
+                            thisuser.addToCartSubtotal(widget.product.price);
                           } else {
                             // Remove the product from the user's saved products
-                            widget.user.removeFromShoppingCart(widget.product);
-                            widget.user.removeFromCartSubtotal(widget.product.price);
+                            thisuser.removeFromShoppingCart(widget.product);
+                            thisuser.removeFromCartSubtotal(widget.product.price);
                           }
                           widget.onChange(); // Call onChange after the state has been updated
 
                         });
+                        //! remove this later
+                        for (Product product in thisuser.ShoppingCart) {
+                          print("product: " + product.name);
+                        }
 
                       },
                     ),
