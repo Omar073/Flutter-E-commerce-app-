@@ -2,10 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:product_cards/ProductsScreen.dart';
 import 'package:product_cards/ProfileScreen.dart';
-import 'Product.dart';
-import 'ProductCard.dart';
 import 'ShoppingCartScreen.dart';
-import 'User.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);

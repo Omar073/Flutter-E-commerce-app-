@@ -1,11 +1,13 @@
+import 'package:product_cards/ProductInCart.dart';
 import 'Product.dart';
+import 'ProductInCart.dart';
 
 class User{
 
   String name;
   String email;
   String password;
-  List<Product> ShoppingCart = [];
+  List<ProductInCart> ShoppingCart = [];
   double CartSubtotal=0;
 
   User({
@@ -16,11 +18,16 @@ class User{
   });
 
   void addToShoppingCart(Product product) {
-      ShoppingCart.add(product);
+    ShoppingCart.add(ProductInCart(product: product, quantity: 1));
   }
 
   void removeFromShoppingCart(Product product) {
-    ShoppingCart.remove(product);
+    // * see if you can make this fn take productInCart
+    ShoppingCart.removeWhere((element) => element.product.ID == product.ID);
+  }
+
+  void clearShoppingCart(){
+    ShoppingCart = [];
   }
 
   // bool isProductSaved(Product product) {
@@ -42,6 +49,10 @@ class User{
 
   void removeFromCartSubtotal(double price){
     CartSubtotal -=price;
+  }
+
+  void clearCartSubtotal(){
+    CartSubtotal = 0 ;
   }
 }
 

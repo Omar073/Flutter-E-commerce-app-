@@ -126,6 +126,7 @@
 
 import 'package:flutter/material.dart';
 import 'Product.dart';
+import 'ProductInCart.dart';
 import 'User.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -178,7 +179,8 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                     IconButton(
                       icon: Icon(
-                        thisuser.ShoppingCart.contains(widget.product)
+                        // thisuser.ShoppingCart.contains(ProductInCart.product.ID)
+                        thisuser.ShoppingCart.any((element) => element.product.ID == widget.product.ID)
                             ? Icons.shopping_cart
                             : Icons.shopping_cart_outlined,
                         color: Colors.orangeAccent,
@@ -186,7 +188,7 @@ class _ProductCardState extends State<ProductCard> {
                       onPressed: () {
                         setState(() {
                           // widget.isProductSaved = !widget.isProductSaved; // Toggle the saved state
-                          if (!thisuser.ShoppingCart.any((element) => element.ID == widget.product.ID)) {
+                          if (!thisuser.ShoppingCart.any((element) => element.product.ID == widget.product.ID)) {
                             // Add the product to the user's saved products
                             thisuser.addToShoppingCart(widget.product);
                             thisuser.addToCartSubtotal(widget.product.price);
@@ -199,9 +201,9 @@ class _ProductCardState extends State<ProductCard> {
 
                         });
                         //! remove this later
-                        for (Product product in thisuser.ShoppingCart) {
-                          print("product: " + product.name);
-                        }
+                        // for (Product product in thisuser.ShoppingCart) {
+                        //   print("product: " + product.name);
+                        // }
 
                       },
                     ),

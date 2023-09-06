@@ -1,7 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:product_cards/HomeScreen.dart';
-import 'ProductsScreen.dart';
+import 'SignUpPage.dart';
 import 'User.dart';
 
 class LoginPage extends StatefulWidget {
@@ -38,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.blue),
                     SizedBox(width: 10),
                     Text(
-                      "Shopify",
+                      "iBuzz",
                       style: TextStyle(
                         fontSize: 50,
                         color: Colors.blue,
@@ -106,17 +105,19 @@ class _LoginPageState extends State<LoginPage> {
                         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                       ),
                       onPressed: () {
-                        final email = _emailController.text;
-                        final password = _passwordController.text;
-
-                        for(User user in users) {
-                          if (user.email == email || user.name == email) {
-                            if (user.password == password) {
-                              thisuser = user;
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-                            }
-                          }
-                        }
+                        // final email = _emailController.text;
+                        // final password = _passwordController.text;
+                        //
+                        // for(User user in users) {
+                        //   if (user.email == email || user.name == email) {
+                        //     if (user.password == password) {
+                        //       thisuser = user;
+                        //       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                        //     }
+                        //   }
+                        // }
+                        thisuser = u1;
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
 
                         // if (kDebugMode) {
                         //   print('Sign-in button pressed');
@@ -126,6 +127,24 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: const Text('Log-in'),
                     ),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Don't have an account? "),
+                        InkWell(
+                          child: const Text("Sign Up", style: TextStyle(
+                            color: Colors.blue, // Set the desired text color
+                            decoration: TextDecoration.underline,
+                            fontSize: 13,
+                          ),),
+                          onTap: (){
+                            // * go to Sign Up screen
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage()));
+                          },
+                        )
+                      ],
+                    )
                   ],
                 ),
               ),

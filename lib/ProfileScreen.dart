@@ -48,7 +48,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               fontSize: 30,
               ),
             ),
-            SizedBox(height: 80,),
+            const SizedBox(height: 80),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   textStyle: const TextStyle(fontSize: 15),

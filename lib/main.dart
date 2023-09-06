@@ -1,9 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'LoginPage.dart';
-import 'ProductCard.dart';
-import 'Product.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 void main() {
   runApp(MyApp());

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'ProductCard.dart';
+import 'ProductInCartCard.dart';
+import 'ProductInCart.dart';
 import 'User.dart';
 
 class ShoppingCartScreen extends StatefulWidget {
@@ -24,17 +25,32 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
       body:
         SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Wrap(
-                spacing: 10, // spacing between items horizontally
-                runSpacing: 10, // spacing between items vertically
-                children: thisuser.ShoppingCart.map<Widget>((p) => ProductCard(product: p, onChange: () { setState(() {}); widget.onChange(); },)).toList(), // ! thoroughly understand this line
-                // Pass both product and user to ProductCard
+              SizedBox(height: 30,),
+              Center(
+                child: Wrap(
+                  spacing: 10, // spacing between items horizontally
+                  runSpacing: 10, // spacing between items vertically
+                  // children: thisuser.ShoppingCart.map<Widget>((p) => ProductCard(product: p, onChange: () { setState(() {}); widget.onChange(); },)).toList(), // ! thoroughly understand this line
+                  children: thisuser.ShoppingCart.map<Widget>((p) => ProductInCartCard(productInCart: p, onChange: () { setState(() {}); widget.onChange(); },)).toList(), // ! thoroughly understand this line
+                  // Pass both product and user to ProductCard
+                ),
               ),
-              const SizedBox(height: 65), // Add spacing below the wrapped items
+              // const SizedBox(height: 20),
+              // Center(
+              //   child: Text('Cart subtotal: ${thisuser.CartSubtotal}',
+              //     style: const TextStyle(
+              //       color: Colors.black,
+              //       fontWeight: FontWeight.bold,
+              //       fontSize: 30,
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(height: 65),
             ],
           ),
-        )
+        ),
     );
   }
 }

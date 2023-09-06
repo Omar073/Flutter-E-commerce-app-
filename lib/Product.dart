@@ -44,9 +44,9 @@ class Product {
 }
 
 
-Product p1 = Product(ID: "s01", name: "Product 1", imageURL: "assets/images/shoe1.jpg", price: 50, rating: 3.8);
-Product p2 = Product(ID: "s02", name: "Product 2", imageURL: "assets/images/shoe3.png", price: 80, rating: 4.8);
-Product p3 = Product(ID: "s03", name: "Product 3", imageURL: "assets/images/shoe2.jpeg", price: 90, rating: 1.8);
+Product p1 = Product(ID: "s01", name: "Turquoise Air Force's", imageURL: "assets/images/shoe1.jpg", price: 50, rating: 4.5);
+Product p2 = Product(ID: "s02", name: "Grey Jordans", imageURL: "assets/images/shoe3.png", price: 80, rating: 5);
+Product p3 = Product(ID: "s03", name: "Blue Jordans", imageURL: "assets/images/shoe2.jpeg", price: 90, rating: 3.2);
 List<Product> products = [p1, p2, p3];
 // widget.user.addToShoppingCart(products[0]);
 // u1.addToShoppingCart(p1);

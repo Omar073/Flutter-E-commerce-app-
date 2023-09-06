@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Product.dart';
 import 'ProductCard.dart';
-import 'User.dart';
-import 'LoginPage.dart';
 
 class ProductsScreen extends StatefulWidget {
   // Product product;
@@ -32,6 +30,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 spacing: 10, // spacing between items horizontally
                 runSpacing: 10, // spacing between items vertically
                 children: products.map((p) => ProductCard(product: p, onChange: () { setState(() {}); widget.onChange(); },)).toList(), // ! thoroughly understand this line
+                // children: products.map((p) => ProductInCartCard(product: p, onChange: () { setState(() {}); widget.onChange(); },)).toList(), // ! thoroughly understand this line
                 // Pass both product and user to ProductCard
               ),
               const SizedBox(height: 65), // Add spacing below the wrapped items
