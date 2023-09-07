@@ -1,4 +1,3 @@
-import 'package:product_cards/ProductInCart.dart';
 import 'Product.dart';
 import 'ProductInCart.dart';
 

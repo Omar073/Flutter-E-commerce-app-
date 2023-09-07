@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'ProductInCartCard.dart';
-import 'ProductInCart.dart';
 import 'User.dart';
 
 class ShoppingCartScreen extends StatefulWidget {
   final VoidCallback onChange;
-  ShoppingCartScreen({Key? key, required this.onChange}) : super(key: key);
+  const ShoppingCartScreen({Key? key, required this.onChange}) : super(key: key);
 
   @override
   State<ShoppingCartScreen> createState() => _ShoppingCartScreenState();

@@ -126,7 +126,6 @@
 
 import 'package:flutter/material.dart';
 import 'Product.dart';
-import 'ProductInCart.dart';
 import 'User.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
