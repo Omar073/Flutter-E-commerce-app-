@@ -15,6 +15,10 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _passwordController = TextEditingController();
   late double width = 100;
   late double height = 300;
+  FocusNode _nameFieldFocus = FocusNode();
+  FocusNode _emailFieldFocus = FocusNode();
+  FocusNode _passwordFieldFocus = FocusNode();
+  bool KeyboardOn = false;
 
   final emailRegex = RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
 
@@ -25,9 +29,18 @@ class _SignUpPageState extends State<SignUpPage> {
   // }
 
   @override
+  void dispose() {
+    _nameFieldFocus.dispose();
+    _emailFieldFocus.dispose();
+    _passwordFieldFocus.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
+    KeyboardOn = (_nameFieldFocus.hasFocus || _emailFieldFocus.hasFocus || _passwordFieldFocus.hasFocus);
 
 //     return MaterialApp(
 //       home: Scaffold(
@@ -251,7 +264,6 @@ class _SignUpPageState extends State<SignUpPage> {
 //   }
 // }
 
-
     return MaterialApp(
       home: Scaffold(
         resizeToAvoidBottomInset: true,
@@ -263,7 +275,7 @@ class _SignUpPageState extends State<SignUpPage> {
               Container(
                 // width: width,
                 width: 420,
-                height: 300,
+                height: double.infinity,
                 // color: Colors.orangeAccent,
                 // color: const Color.fromARGB(220, 243,119,6),
                 decoration: BoxDecoration(
@@ -276,75 +288,82 @@ class _SignUpPageState extends State<SignUpPage> {
                     ],
                   ),
                 ),
-                child: const Row(
-                  // mainAxisAlignment: MainAxisAlignment.center,
+                child:
+                const Column(mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(width: 15),
-                    Text(
-                      "Sign Up\nWelcome",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35,
-                        color: Colors.white,
-                      ),
-                      textAlign: TextAlign.left,
+                    SizedBox(
+                      height: 90,
                     ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(width: 15),
+                        Text(
+                          "Sign Up\nWelcome",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 35,
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ],
+                    ),
+
+
                   ],
                 ),
               ),
-              Positioned(
-                top: 250,
-                left: 0,
-                right: 0,
+              Positioned
+                (top: 210,//!why does it need left and right = 0
+                left: 0,right: 0,
                 child: Container(
-                  height: height - 150,
+                  height: height / (1.2),
                   // height: 500,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(70.0),
-                  ),
-                  // child: const Center(child: Text("Sign Up")),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(70.0),
+                      topRight: Radius.circular(70.0),
 
-                  // Positioned(
-                  //   top: 200,
-                  //   left: 0,
-                  //   right: 0,
-                  //   child: Container(
-                  //     // height: height - 200,
-                  //     height: 500,
-                  //     decoration: BoxDecoration(
-                  //       color: Colors.red,
-                  //       borderRadius: BorderRadius.circular(70.0),
-                  //     ),
+                    ),
+                  ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment:KeyboardOn?MainAxisAlignment.start: MainAxisAlignment.center,
                     children: [
+                      // SizedBox(height: 50,),
                       // const SizedBox(height: 180),
-                      const SizedBox(height: 300),
-                      // Padding(
-                      //   padding: const EdgeInsets.symmetric(horizontal: 12.0)
-                      //       .copyWith(bottom: 12.0),
-                      //   child: TextField(
-                      //     // * Name text field
-                      //     controller: _nameController,
-                      //     style: const TextStyle(
-                      //       color: Colors.black,
-                      //       fontWeight: FontWeight.bold,
-                      //     ),
-                      //     decoration: InputDecoration(
-                      //       border: OutlineInputBorder(
-                      //         borderRadius: BorderRadius.circular(30),
-                      //       ),
-                      //       contentPadding: const EdgeInsets.all(20),
-                      //       labelText: "Name",
-                      //     ),
-                      //   ),
-                      // ),
+                      // const SizedBox(height: 350),Expanded(
+                      //
+                      //                       child: Container(color: Colors.pink,)),
+
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 40.0)
+                            .copyWith(bottom: 12.0),
+                        child: TextFormField(
+                          // * Name text field
+                          focusNode: _nameFieldFocus,
+                          controller: _nameController,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            contentPadding: const EdgeInsets.all(20),
+                            labelText: "Name",
+                          ),
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12.0)
                             .copyWith(bottom: 12.0),
                         child: TextField(
                           // * Email text field
+                          focusNode: _emailFieldFocus,
                           controller: _emailController,
                           style: const TextStyle(
                             color: Colors.black,
@@ -374,6 +393,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             .copyWith(bottom: 12.0),
                         child: TextField(
                           // * password text field
+                          focusNode: _passwordFieldFocus,
                           controller: _passwordController,
                           style: const TextStyle(
                             color: Colors.black,
@@ -410,7 +430,8 @@ class _SignUpPageState extends State<SignUpPage> {
                               builder: (context) {
                                 return AlertDialog(
                                   title: const Text('Valid Email'),
-                                  content: const Text('The email address is valid.'),
+                                  content:
+                                  const Text('The email address is valid.'),
                                   actions: [
                                     TextButton(
                                       onPressed: () {
@@ -429,7 +450,8 @@ class _SignUpPageState extends State<SignUpPage> {
                               builder: (context) {
                                 return AlertDialog(
                                   title: const Text('Invalid Email'),
-                                  content: const Text('Please enter a valid email address.'),
+                                  content: const Text(
+                                      'Please enter a valid email address.'),
                                   actions: [
                                     TextButton(
                                       onPressed: () {
@@ -449,10 +471,25 @@ class _SignUpPageState extends State<SignUpPage> {
                       //   color: Colors.white,
                       //   height: 300,
                       // )
+
                     ],
                   ),
+                  // child: const Center(child: Text("Sign Up")),
+
+                  // Positioned(
+                  //   top: 200,
+                  //   left: 0,
+                  //   right: 0,
+                  //   child: Container(
+                  //     // height: height - 200,
+                  //     height: 500,
+                  //     decoration: BoxDecoration(
+                  //       color: Colors.red,
+                  //       borderRadius: BorderRadius.circular(70.0),
+                  //     ),
                 ),
               ),
+
             ],
           ),
         ),
