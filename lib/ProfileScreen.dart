@@ -22,10 +22,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start, // Align at the top of the screen
           children: [
-            const SizedBox(height: 50), // Add vertical space above the icon
-            const Icon(Icons.person, size: 100, color: Colors.teal),
+            const SizedBox(height: 50), // to add vertical space above the icon
+            Icon (thisuser.name == 'Guest' ? Icons.person_off_outlined : Icons.person, size: 100, color: Colors.grey),
             const SizedBox(height: 200), // Add vertical space between the icon and the text
             Text(
+              // TODO: if guest user print guest
               thisuser.name,
               style: const TextStyle(
                 color: Colors.teal,
@@ -41,13 +42,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 fontSize: 30,
               ),
             ),
-            Text('Cart subtotal: ${thisuser.CartSubtotal}',
-              style: const TextStyle(
-              color: Colors.teal,
-              fontWeight: FontWeight.bold,
-              fontSize: 30,
-              ),
-            ),
+            // Text('Cart subtotal: ${thisuser.CartSubtotal}',
+            //   style: const TextStyle(
+            //   color: Colors.teal,
+            //   fontWeight: FontWeight.bold,
+            //   fontSize: 30,
+            //   ),
+            // ),
             const SizedBox(height: 80),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(

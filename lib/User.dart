@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
+
 import 'Product.dart';
 import 'ProductInCart.dart';
 
 class User{
 
+  String uid ='';
   String name;
   String email;
   String password;
@@ -10,6 +13,7 @@ class User{
   double CartSubtotal=0;
 
   User({
+    required this.uid,
     required this.name,
     required this.email,
     required this.password,
@@ -33,34 +37,31 @@ class User{
   //   return ShoppingCart.contains(product);
   // }
 
-  // double getCartSubtotal(){
-  //   double total =0;
-  //   for(Product product in ShoppingCart){
-  //     total += product.price;
-  //   }
-  //   return total;
-  // }
-  // TODO: we can replaced this fn with an attribute of the user class that is changed each time a product is added or removed
-
-  void addToCartSubtotal(double price){
-    CartSubtotal +=price;
-  }
-
-  void removeFromCartSubtotal(double price){
-    CartSubtotal -=price;
-  }
-
   void clearCartSubtotal(){
     CartSubtotal = 0 ;
+  }
+
+  // Update user info function
+  void updateUserInfo({
+    String? uid,
+    String? name,
+    String? email,
+    String? password,
+  }) {
+    this
+      ..uid = uid ?? this.uid
+      ..name = name ?? this.name
+      ..email = email ?? this.email
+      ..password = password ?? this.password;
   }
 }
 
 
-User u1 = User(name: "omar", email: "email1@gmail.com", password: "1234", ShoppingCart: []);
-User u2 = User(name: "mohammed", email: "email2@gmail.com", password: "1234", ShoppingCart: []);
-User u3 = User(name: "ali", email: "email3@gmail.com", password: "1234", ShoppingCart: []);
+User u1 = User(uid: '1', name: "omar", email: "email1@gmail.com", password: "1234", ShoppingCart: []);
+User u2 = User(uid: '2', name: "mohammed", email: "email2@gmail.com", password: "1234", ShoppingCart: []);
+User u3 = User(uid: '3', name: "ali", email: "email3@gmail.com", password: "1234", ShoppingCart: []);
 // ! try to make SavedProducts nullable in User class
 
 List<User> users = [u1, u2, u3];
 
-User thisuser = User(name: "", email: "", password: "", ShoppingCart: []); // ! this is a temporary user that will be replaced by the user that logs in
+User thisuser = User(uid: '', name: "", email: "", password: "", ShoppingCart: []); // ! this is a temporary user that will be replaced by the user that logs in

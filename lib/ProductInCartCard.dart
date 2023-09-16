@@ -103,13 +103,16 @@ class _ProductInCartCardState extends State<ProductInCartCard> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              InkWell(child: const Text("-", style: TextStyle(fontSize: 25),),
+                              InkWell(child: const Text("-", style: TextStyle(fontSize: 30),),
                                 onTap: (){
                                   setState(() {
                                     if(widget.productInCart.quantity>1){
                                       widget.productInCart.quantity--;
+                                      thisuser.CartSubtotal -= widget.productInCart.product.price;
+
                                     }
                                     else if(widget.productInCart.quantity ==1){
+                                      thisuser.CartSubtotal -= widget.productInCart.product.price * widget.productInCart.quantity;
                                       thisuser.removeFromShoppingCart(widget.productInCart.product);
                                     }
                                     widget.onChange();
@@ -118,12 +121,13 @@ class _ProductInCartCardState extends State<ProductInCartCard> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 3.0),
-                                child: Text('${widget.productInCart.quantity}', style: const TextStyle(fontSize: 15),),
+                                child: Text('${widget.productInCart.quantity}', style: const TextStyle(fontSize: 17),),
                               ),
-                              InkWell(child: const Text("+", style: TextStyle(fontSize: 15),),
+                              InkWell(child: const Text("+", style: TextStyle(fontSize: 20),),
                                 onTap: (){
                                   setState(() {
                                     widget.productInCart.quantity++;
+                                    thisuser.CartSubtotal += widget.productInCart.product.price;
                                     widget.onChange();
                                   });
                                 },
@@ -169,6 +173,7 @@ class _ProductInCartCardState extends State<ProductInCartCard> {
                   padding: const EdgeInsets.only(left: 270.0).copyWith(bottom: 5),
                   child: InkWell(
                     onTap: () {
+                      thisuser.CartSubtotal -= widget.productInCart.product.price * widget.productInCart.quantity;
                       thisuser.removeFromShoppingCart(widget.productInCart.product);
                       setState(() {
                         widget.onChange(); // Call onChange after the state has been updated

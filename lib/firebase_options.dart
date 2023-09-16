@@ -44,37 +44,37 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAzjrt3fj11N3RWImAH8UHEuAhaRhjVzAo',
-    appId: '1:1070599377855:web:cb3fdd585e86d49c71070a',
-    messagingSenderId: '1070599377855',
-    projectId: 'e-commerce-app-8998a',
-    authDomain: 'e-commerce-app-8998a.firebaseapp.com',
-    storageBucket: 'e-commerce-app-8998a.appspot.com',
+    apiKey: 'AIzaSyCQltwWgwjJNsPnG4iSHgjMgPo7qN1LJX8',
+    appId: '1:413708481879:web:a2efa8a20f4793c0857a12',
+    messagingSenderId: '413708481879',
+    projectId: 'ibuzz-44eb2',
+    authDomain: 'ibuzz-44eb2.firebaseapp.com',
+    storageBucket: 'ibuzz-44eb2.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDjbvXSmqlwxYr9-oRoFBLGK8mCBV98umg',
-    appId: '1:1070599377855:android:2b7a7b242f6950e471070a',
-    messagingSenderId: '1070599377855',
-    projectId: 'e-commerce-app-8998a',
-    storageBucket: 'e-commerce-app-8998a.appspot.com',
+    apiKey: 'AIzaSyD3gm_-1MvLO7lARPws_NkK35pM_EvzDnQ',
+    appId: '1:413708481879:android:56baad8892bcf17e857a12',
+    messagingSenderId: '413708481879',
+    projectId: 'ibuzz-44eb2',
+    storageBucket: 'ibuzz-44eb2.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB0Mwkx53kXs40DRHc_gmT1B-aUlpFIACM',
-    appId: '1:1070599377855:ios:fe5139424a79f5fa71070a',
-    messagingSenderId: '1070599377855',
-    projectId: 'e-commerce-app-8998a',
-    storageBucket: 'e-commerce-app-8998a.appspot.com',
+    apiKey: 'AIzaSyBh6Rc7o4MGfXCcrAucSo203d2fRt4sWQA',
+    appId: '1:413708481879:ios:da01c0ad4624d933857a12',
+    messagingSenderId: '413708481879',
+    projectId: 'ibuzz-44eb2',
+    storageBucket: 'ibuzz-44eb2.appspot.com',
     iosBundleId: 'com.example.productCards',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyB0Mwkx53kXs40DRHc_gmT1B-aUlpFIACM',
-    appId: '1:1070599377855:ios:aa685792b9d2f4a171070a',
-    messagingSenderId: '1070599377855',
-    projectId: 'e-commerce-app-8998a',
-    storageBucket: 'e-commerce-app-8998a.appspot.com',
+    apiKey: 'AIzaSyBh6Rc7o4MGfXCcrAucSo203d2fRt4sWQA',
+    appId: '1:413708481879:ios:1676ef9c95c8fb2a857a12',
+    messagingSenderId: '413708481879',
+    projectId: 'ibuzz-44eb2',
+    storageBucket: 'ibuzz-44eb2.appspot.com',
     iosBundleId: 'com.example.productCards.RunnerTests',
   );
 }

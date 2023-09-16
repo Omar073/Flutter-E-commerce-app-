@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "1070599377855",
-    "project_id": "e-commerce-app-8998a",
-    "storage_bucket": "e-commerce-app-8998a.appspot.com"
+    "project_number": "413708481879",
+    "project_id": "ibuzz-44eb2",
+    "storage_bucket": "ibuzz-44eb2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1070599377855:android:2b7a7b242f6950e471070a",
+        "mobilesdk_app_id": "1:413708481879:android:56baad8892bcf17e857a12",
         "android_client_info": {
           "package_name": "com.example.product_cards"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDjbvXSmqlwxYr9-oRoFBLGK8mCBV98umg"
+          "current_key": "AIzaSyD3gm_-1MvLO7lARPws_NkK35pM_EvzDnQ"
         }
       ],
       "services": {

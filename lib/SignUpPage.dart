@@ -1,5 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:product_cards/HomeScreen.dart';
+import 'User.dart';
+import 'firebaseAuth.dart';
 // pub add
 
 class SignUpPage extends StatefulWidget {
@@ -19,6 +23,7 @@ class _SignUpPageState extends State<SignUpPage> {
   FocusNode _emailFieldFocus = FocusNode();
   FocusNode _passwordFieldFocus = FocusNode();
   bool KeyboardOn = false;
+  FirebaseAuthService firebaseauth = FirebaseAuthService(); // create an instance of FirebaseAuthService
 
   final emailRegex = RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
 
@@ -41,6 +46,296 @@ class _SignUpPageState extends State<SignUpPage> {
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     KeyboardOn = (_nameFieldFocus.hasFocus || _emailFieldFocus.hasFocus || _passwordFieldFocus.hasFocus);
+
+    return MaterialApp(
+      home: Scaffold(
+        resizeToAvoidBottomInset: true,
+        body: Container(
+          // color: Colors.green,
+          height: height,
+          child: Stack(
+            children: [
+              Container(
+                // width: width,
+                width: width, //! 420
+                height: double.infinity,
+                // color: Colors.orangeAccent,
+                // color: const Color.fromARGB(220, 243,119,6),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    colors: [
+                      Colors.orange.shade900,
+                      Colors.orange.shade800,
+                      Colors.orange.shade400,
+                    ],
+                  ),
+                ),
+                child:
+                const Column(mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 90,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(width: 15),
+                        Text(
+                          "Sign Up\nWelcome",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 35,
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ],
+                    ),
+
+
+                  ],
+                ),
+              ),
+              Positioned
+                (top: 210,//!why does it need left and right = 0
+                left: 0,right: 0,
+                child: Container(
+                  height: height / (1.2),
+                  // height: 500,
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(70.0),
+                      topRight: Radius.circular(70.0),
+
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment:KeyboardOn?MainAxisAlignment.start: MainAxisAlignment.center,
+                    children: [
+                      // SizedBox(height: 50,),
+                      // const SizedBox(height: 180),
+                      // const SizedBox(height: 350),Expanded(
+                      //
+                      //                       child: Container(color: Colors.pink,)),
+
+                      // Padding(
+                      //   padding: const EdgeInsets.symmetric(horizontal: 40.0)
+                      //       .copyWith(bottom: 12.0),
+                      //   child: TextFormField(
+                      //     // * Name text field
+                      //     focusNode: _nameFieldFocus,
+                      //     controller: _nameController,
+                      //     style: const TextStyle(
+                      //       color: Colors.black,
+                      //       fontWeight: FontWeight.bold,
+                      //     ),
+                      //     decoration: InputDecoration(
+                      //       border: OutlineInputBorder(
+                      //         borderRadius: BorderRadius.circular(30),
+                      //       ),
+                      //       contentPadding: const EdgeInsets.all(20),
+                      //       labelText: "Name",
+                      //     ),
+                      //   ),
+                      // ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0)
+                            .copyWith(bottom: 12.0),
+                        child: TextField(
+                          // * Email text field
+                          focusNode: _emailFieldFocus,
+                          controller: _emailController,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          decoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(
+                                color: Colors.orange.shade900,
+                                width: 1,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(
+                                color: Colors.orange.shade900,
+                                width: 1,
+                              ),
+                            ),
+                            contentPadding: const EdgeInsets.all(20),
+                            labelText: "Email",
+                            labelStyle: const TextStyle(
+                              color: Colors.black, // Change the color here
+                            ),
+                            prefixIcon: const Icon(Icons.email, color: Colors.deepOrangeAccent,),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0)
+                            .copyWith(bottom: 12.0),
+                        child: TextField(
+                          // * password text field
+                          focusNode: _passwordFieldFocus,
+                          controller: _passwordController,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          decoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(
+                                color: Colors.orange.shade900,
+                                width: 1,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(
+                                color: Colors.orange.shade900,
+                                width: 1,
+                              ),
+                            ),
+                            contentPadding: const EdgeInsets.all(20),
+                            labelText: "Password",
+                            labelStyle: const TextStyle(
+                              color: Colors.black, // Change the color here
+                            ),
+                            prefixIcon: const Icon(Icons.key, color: Colors.deepOrangeAccent,),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          textStyle: const TextStyle(fontSize: 15),
+                          shape: const StadiumBorder(),
+                          backgroundColor: Colors.orange.shade900,
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 15,
+                            vertical: 15,
+                          ),
+                        ),
+                        // TODO: check for email and password validity in independent functions
+                        onPressed: () async {
+                          final enteredEmail = _emailController.text;
+                          if (emailRegex.hasMatch(enteredEmail)) {
+                            // Email is valid
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text('Valid Email'),
+                                  content:
+                                  const Text('The email address is valid.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () async {
+                                        Navigator.of(context).pop();
+                                        // * maybe place it somewhere else up to you
+                                        bool signupresult = await firebaseauth.SignUp(_emailController.text, _passwordController.text);
+                                        if (signupresult == true) {
+                                          debugPrint("signed in");
+
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomeScreen()));
+                                        }
+                                      },
+                                      child: const Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                            // bool signupresult = await firebaseauth.SignUp(_emailController.text, _passwordController.text);
+                            // if (signupresult == true) {
+                            //   debugPrint("signed in");
+                            //
+                            //   Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomeScreen()));
+                            // }
+                          } else {
+                            // Email is not valid
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text('Invalid Email'),
+                                  content: const Text(
+                                      'Please enter a valid email address.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: const Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        },
+                        child: const Text('Submit'),
+                      ),
+                      const SizedBox(height: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          textStyle: const TextStyle(fontSize: 15),
+                          shape: const StadiumBorder(),
+                          backgroundColor: Colors.orange.shade900,
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 15,
+                            vertical: 15,
+                          ),
+                        ),
+                        onPressed: ()async{
+                          bool signInResult = await firebaseauth.signInAnon();
+                          print(signInResult);
+                          if (signInResult == true) {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomeScreen()));
+                          }
+
+                        },
+                        child: const Text('Continue as a Guest'),
+                      ),
+                      // Container(
+                      //   color: Colors.white,
+                      //   height: 300,
+                      // )
+
+                    ],
+                  ),
+                  // child: const Center(child: Text("Sign Up")),
+
+                  // Positioned(
+                  //   top: 200,
+                  //   left: 0,
+                  //   right: 0,
+                  //   child: Container(
+                  //     // height: height - 200,
+                  //     height: 500,
+                  //     decoration: BoxDecoration(
+                  //       color: Colors.red,
+                  //       borderRadius: BorderRadius.circular(70.0),
+                  //     ),
+                ),
+              ),
+
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 
 //     return MaterialApp(
 //       home: Scaffold(
@@ -263,237 +558,3 @@ class _SignUpPageState extends State<SignUpPage> {
 //     );
 //   }
 // }
-
-    return MaterialApp(
-      home: Scaffold(
-        resizeToAvoidBottomInset: true,
-        body: Container(
-          // color: Colors.green,
-          height: height,
-          child: Stack(
-            children: [
-              Container(
-                // width: width,
-                width: 420,
-                height: double.infinity,
-                // color: Colors.orangeAccent,
-                // color: const Color.fromARGB(220, 243,119,6),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    colors: [
-                      Colors.orange.shade900,
-                      Colors.orange.shade800,
-                      Colors.orange.shade400,
-                    ],
-                  ),
-                ),
-                child:
-                const Column(mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 90,
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      // mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(width: 15),
-                        Text(
-                          "Sign Up\nWelcome",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 35,
-                            color: Colors.white,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ],
-                    ),
-
-
-                  ],
-                ),
-              ),
-              Positioned
-                (top: 210,//!why does it need left and right = 0
-                left: 0,right: 0,
-                child: Container(
-                  height: height / (1.2),
-                  // height: 500,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(70.0),
-                      topRight: Radius.circular(70.0),
-
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment:KeyboardOn?MainAxisAlignment.start: MainAxisAlignment.center,
-                    children: [
-                      // SizedBox(height: 50,),
-                      // const SizedBox(height: 180),
-                      // const SizedBox(height: 350),Expanded(
-                      //
-                      //                       child: Container(color: Colors.pink,)),
-
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 40.0)
-                            .copyWith(bottom: 12.0),
-                        child: TextFormField(
-                          // * Name text field
-                          focusNode: _nameFieldFocus,
-                          controller: _nameController,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            contentPadding: const EdgeInsets.all(20),
-                            labelText: "Name",
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0)
-                            .copyWith(bottom: 12.0),
-                        child: TextField(
-                          // * Email text field
-                          focusNode: _emailFieldFocus,
-                          controller: _emailController,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.orange.shade900,
-                                width: 1,
-                              ),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.orange.shade900,
-                                width: 1,
-                              ),
-                            ),
-                            contentPadding: const EdgeInsets.all(20),
-                            prefixIcon: const Icon(Icons.email),
-                            labelText: "Email",
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0)
-                            .copyWith(bottom: 12.0),
-                        child: TextField(
-                          // * password text field
-                          focusNode: _passwordFieldFocus,
-                          controller: _passwordController,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            contentPadding: const EdgeInsets.all(20),
-                            labelText: "Password",
-                            prefixIcon: const Icon(Icons.key),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          textStyle: const TextStyle(fontSize: 15),
-                          shape: const StadiumBorder(),
-                          backgroundColor: Colors.orange.shade900,
-                          foregroundColor: Colors.white,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 15,
-                            vertical: 15,
-                          ),
-                        ),
-                        onPressed: () {
-                          final enteredEmail = _emailController.text;
-                          if (emailRegex.hasMatch(enteredEmail)) {
-                            // Email is valid
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: const Text('Valid Email'),
-                                  content:
-                                  const Text('The email address is valid.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: const Text('OK'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          } else {
-                            // Email is not valid
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: const Text('Invalid Email'),
-                                  content: const Text(
-                                      'Please enter a valid email address.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: const Text('OK'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          }
-                        },
-                        child: const Text('Submit'),
-                      ),
-                      // Container(
-                      //   color: Colors.white,
-                      //   height: 300,
-                      // )
-
-                    ],
-                  ),
-                  // child: const Center(child: Text("Sign Up")),
-
-                  // Positioned(
-                  //   top: 200,
-                  //   left: 0,
-                  //   right: 0,
-                  //   child: Container(
-                  //     // height: height - 200,
-                  //     height: 500,
-                  //     decoration: BoxDecoration(
-                  //       color: Colors.red,
-                  //       borderRadius: BorderRadius.circular(70.0),
-                  //     ),
-                ),
-              ),
-
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
