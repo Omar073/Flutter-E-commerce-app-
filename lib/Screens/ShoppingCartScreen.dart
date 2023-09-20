@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'ProductInCartCard.dart';
-import 'User.dart';
+import '../CustomWidgets/ProductInCartCard.dart';
+import '../Classes/User.dart';
 
 class ShoppingCartScreen extends StatefulWidget {
   final VoidCallback onChange;

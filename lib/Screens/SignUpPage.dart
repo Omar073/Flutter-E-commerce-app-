@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:product_cards/HomeScreen.dart';
-import 'User.dart';
-import 'firebaseAuth.dart';
+import 'package:product_cards/Screens/HomeScreen.dart';
+import '../Classes/User.dart';
+import '../Firebase/firebaseAuth.dart';
 // pub add
 
 class SignUpPage extends StatefulWidget {
@@ -17,8 +17,8 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  late double width = 100;
-  late double height = 300;
+  late double width;
+  late double height;
   FocusNode _nameFieldFocus = FocusNode();
   FocusNode _emailFieldFocus = FocusNode();
   FocusNode _passwordFieldFocus = FocusNode();

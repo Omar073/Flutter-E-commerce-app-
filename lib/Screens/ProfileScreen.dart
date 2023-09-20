@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'LoginPage.dart';
-import 'User.dart';
+import '../Classes/User.dart';
 
 class ProfileScreen extends StatefulWidget {
   ProfileScreen({Key? key}) : super(key: key);

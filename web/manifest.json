@@ -1,6 +1,6 @@
 {
     "name": "iBuzz",
-    "short_name": "product_cards",
+    "short_name": "iBuzz",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

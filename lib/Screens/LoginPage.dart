@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:product_cards/HomeScreen.dart';
+import 'package:product_cards/Screens/HomeScreen.dart';
+import '../Classes/User.dart';
 import 'SignUpPage.dart';
-import 'User.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

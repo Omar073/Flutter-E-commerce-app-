@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 import 'Product.dart';
 import 'ProductInCart.dart';
 
@@ -57,7 +55,7 @@ class User{
 }
 
 
-User u1 = User(uid: '1', name: "omar", email: "email1@gmail.com", password: "1234", ShoppingCart: []);
+User u1 = User(uid: '1', name: "omar", email: "email1@gmail.com", password: "1234", ShoppingCart: [ProductInCart(product: p1, quantity: 1)]);
 User u2 = User(uid: '2', name: "mohammed", email: "email2@gmail.com", password: "1234", ShoppingCart: []);
 User u3 = User(uid: '3', name: "ali", email: "email3@gmail.com", password: "1234", ShoppingCart: []);
 // ! try to make SavedProducts nullable in User class

@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'LoginPage.dart';
-import 'firebase_options.dart';
+import 'Screens/LoginPage.dart';
+import 'Firebase/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 // com.example.iBuzz
 

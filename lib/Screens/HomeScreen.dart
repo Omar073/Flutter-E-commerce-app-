@@ -1,7 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:product_cards/ProductsScreen.dart';
-import 'package:product_cards/ProfileScreen.dart';
+import 'ProductsScreen.dart';
+import 'ProfileScreen.dart';
 import 'ShoppingCartScreen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,8 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Screens = [
-      ProductsScreen(onChange: () { setState(() {}); },),
       ShoppingCartScreen(onChange: () { setState(() {}); },),
+      ProductsScreen(onChange: () { setState(() {}); },),
       ProfileScreen(),
     ];
 
