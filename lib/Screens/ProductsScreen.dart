@@ -29,7 +29,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
               Wrap(
                 spacing: 10, // spacing between items horizontally
                 runSpacing: 10, // spacing between items vertically
-                children: products.map((p) => ProductCard(product: p, onChange: () { setState(() {}); widget.onChange(); },)).toList(), // ! thoroughly understand this line
+                children: products.map((p) => ProductCard(product: p, onChange: () { setState(() {});
+                  widget.onChange(); },)).toList(), // ! thoroughly understand this line
                 // children: products.map((p) => ProductInCartCard(product: p, onChange: () { setState(() {}); widget.onChange(); },)).toList(), // ! thoroughly understand this line
                 // Pass both product and user to ProductCard
               ),

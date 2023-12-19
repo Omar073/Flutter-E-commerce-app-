@@ -6,7 +6,7 @@ class FirebaseAuthService{
 
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
-  // anon signin
+  // anon SignIn
   Future signInAnon() async {
     UserCredential userCredential = await firebaseAuth.signInAnonymously();
     print("userID ${userCredential.user}");
@@ -15,6 +15,7 @@ class FirebaseAuthService{
     return userCredential.user != null;
   }
 
+  // credential signup
   Future <bool> SignUp (String email, String password) async {
     try {
       UserCredential userCredential = await firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
@@ -26,8 +27,5 @@ class FirebaseAuthService{
     }
   }
 
-
-// credential signin
-
-  // register with credentials
+  // credential LogIn
 }

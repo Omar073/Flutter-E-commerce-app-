@@ -41,8 +41,8 @@ class _ProductInCartCardState extends State<ProductInCartCard> {
             color: Colors.grey[300],
             ),
             child: Container(
-              height: 150,
-              child: ListTile(
+              height: 170,
+              child: ListTile( //! TODO: replace with ROW
                 // leading: CircleAvatar(
                 //   radius: 30,
                 //   backgroundColor: Colors.white,
@@ -56,23 +56,23 @@ class _ProductInCartCardState extends State<ProductInCartCard> {
                     width: diam, // Set the desired width of the circular image
                     height: diam, // Set the desired height of the circular image
                     // fit: BoxFit.contain, // Use the 'cover' fit to make sure the image covers the circular boundary
-                    //! need to work out filling the entire shoe in the circle
+                    //! need to work out filling the entire product in the circle
                   ),
                 ),
                 title: Padding(
                   padding: const EdgeInsets.only(top: 16.0),
                   child: Text(widget.productInCart.product.name),
                 ),
-                subtitle: Text('${widget.productInCart.product.price} EGP \nh\nh\nh\nh\nh\nh'),
+                subtitle: Text('${widget.productInCart.product.price} EGP'),
                 trailing: Container(
                   color: Colors.red,
-                  height: double.infinity,
+                  height: 100,
                   child: Column(
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 6.0).copyWith(right: 5),
                         child: Container(
-                          height: 40,
+                          height: 50,
                           width: 80,
                           decoration: BoxDecoration(
                             border: Border.all(width: 1,color: Colors.grey),

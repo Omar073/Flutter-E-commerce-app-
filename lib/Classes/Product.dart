@@ -13,6 +13,13 @@ class Product {
     required this.rating,
   });
 
+}
+
+Product p1 = Product(ID: "s01", name: "Turquoise Air Force's", imageURL: "assets/images/shoe1.jpg", price: 50, rating: 4.5);
+Product p2 = Product(ID: "s02", name: "Grey Jordans", imageURL: "assets/images/shoe3.png", price: 80, rating: 5);
+Product p3 = Product(ID: "s03", name: "Blue Jordans", imageURL: "assets/images/shoe2.jpeg", price: 90, rating: 3.2);
+List<Product> products = [p1, p2, p3];
+
   //
   // List<Product> products = [
   //   Product(name: "Product 1", imageURL: "assets/images/shoe1.jpeg", price: 100, rating: 4.5),
@@ -40,14 +47,6 @@ class Product {
   // );
   //
   // static final List<Product> products = [p4, p5, p6];
-
-}
-
-
-Product p1 = Product(ID: "s01", name: "Turquoise Air Force's", imageURL: "assets/images/shoe1.jpg", price: 50, rating: 4.5);
-Product p2 = Product(ID: "s02", name: "Grey Jordans", imageURL: "assets/images/shoe3.png", price: 80, rating: 5);
-Product p3 = Product(ID: "s03", name: "Blue Jordans", imageURL: "assets/images/shoe2.jpeg", price: 90, rating: 3.2);
-List<Product> products = [p1, p2, p3];
 // widget.user.addToShoppingCart(products[0]);
 // u1.addToShoppingCart(p1);
 // List<Product> products = widget.user.SavedProducts; // Use user's saved products list
